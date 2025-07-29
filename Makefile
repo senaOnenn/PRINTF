@@ -3,7 +3,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 
-SRC = ft_printf.c
+SRC = ft_printf.c	ft_printf_func.c
 
 OBJ = $(SRC:.c=.o)
 

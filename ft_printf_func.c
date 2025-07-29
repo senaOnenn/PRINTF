@@ -6,64 +6,40 @@
 /*   By: eonen <eonen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 13:21:41 by eonen             #+#    #+#             */
-/*   Updated: 2025/07/14 13:25:54 by eonen            ###   ########.fr       */
+/*   Updated: 2025/07/29 17:10:14 by eonen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	numlen(int n)
+int ft_putchar(char c)
 {
-	int	len;
-
-	len = 0;
-	if (n == 0)
-		return (1);
-	if (n < 0)
-		len = 1;
-	while (n != 0)
-	{
-		n /= 10;
-		len++;
-	}
-	return (len);
+	return (write(1,&c,1));
 }
 
-char	*ft_itoa(int n)
+int ft_putstr(char *s)
 {
-	char	*str;
-	int		len;
-
-	len = numlen(n);
-	str = ft_calloc(len + 1, sizeof(char));
-	if (!str)
-		return (NULL);
-	if (n == 0)
-		str[0] = '0';
-	else if (n < 0)
+	if(!s)
+		return;
+	while(*s != '\0')
 	{
-		str[0] = '-';
-		if (n == -2147483648)
-		{
-			str[--len] = '8';
-			n /= 10;
-		}
-		n = -n;
-	}
-	while (n != 0)
-	{
-		str[len-- - 1] = (n % 10) + '0';
-		n /= 10;
-	}
-	return (str);
-}
-void	ft_putstr(char *s)
-{
-	if (!s)
-		return ;
-	while (*s != '\0')
-	{
-		write(,s, 1);
+		write(1,s,1);
 		s++;
 	}
+	return (s);
+}
+
+int ft_putnbr_base(long long n, char *base_chars)
+{
+	
+}
+
+int ft_put_hex_ptr(void *ptr)
+{
+	
+}
+
+int ft_put_unsigned_nbr(unsigned int n)
+{
+	
 }
