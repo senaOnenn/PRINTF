@@ -6,32 +6,38 @@
 /*   By: eonen <eonen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 13:21:41 by eonen             #+#    #+#             */
-/*   Updated: 2025/07/29 17:10:14 by eonen            ###   ########.fr       */
+/*   Updated: 2025/08/01 16:41:27 by eonen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_putchar(char c)
+static int get_base_len(char *base_chars)
 {
-	return (write(1,&c,1));
-}
-
-int ft_putstr(char *s)
-{
-	if(!s)
-		return;
-	while(*s != '\0')
+	int len = 0;
+	while(base_chars[len])
 	{
-		write(1,s,1);
-		s++;
-	}
-	return (s);
+		len++;
+	}	
+	return len;
 }
 
 int ft_putnbr_base(long long n, char *base_chars)
 {
+	int count;
+	int base_len;
 	
+	base_len = get_base_len(base_chars);
+	count = 0;
+	if(n < 0)
+	{
+		count += ft_putchar('-');
+		n = -n;
+	}
+	if(n >= base_len)
+		count += ft_putnbr_base(n/base_len, base_chars);
+	count += ft_putchar(&base_chars[n % base_len]);
+	return (count);
 }
 
 int ft_put_hex_ptr(void *ptr)
