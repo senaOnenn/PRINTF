@@ -6,7 +6,7 @@
 /*   By: eonen <eonen@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 12:21:54 by eonen             #+#    #+#             */
-/*   Updated: 2025/08/01 18:00:47 by eonen            ###   ########.fr       */
+/*   Updated: 2025/08/01 18:50:16 by eonen            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,22 @@ int ft_printf(const char *format, ...)
             else if(*format == 'd' || *format =='i')
                 count += ft_putnbr_decimal(va_arg(args, int));
             else if(*format = 'u')
+                count += ft_put_unsigned_nbr(va_arg(args, unsigned int));
+            else if(*format = 'x')
+                count += ft_putnbr_hex(va_arg(args, unsigned int), 'x');
+            else if(*format = 'X')
+                count += ft_putnbr_hex(va_arg(args, unsigned int), 'X');
+            else if(*format = 'p')
+                count += ft_put_hex_ptr(va_arg(args, void *));
+            else if(*format == '%')
+                count += ft_putchar('%');
+            else
+                count += ft_putchar(*format);
         }
+        else
+            count += ft_putchar(*format);
+        format++;
     }
+    va_end(args);
+    return (count);
 }
