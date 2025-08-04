@@ -21,7 +21,7 @@ int ft_format(const char **format, va_list args);
 int ft_putstr(char *s);
 int ft_putchar(char c);
 int ft_putnbr_hex(unsigned int n, char case_type);
-int ft_putnbr_decimal(long n);
+int ft_putnbr_decimal(int n);
 int ft_put_unsigned_nbr(unsigned int n);
 int ft_put_hex_ptr(void *ptr);
 int ft_putnbr_base(unsigned long n, char *base_chars);

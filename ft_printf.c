@@ -75,7 +75,7 @@ int ft_printf(const char *format, ...)
     int count;
     
     count = 0;
-    va_start(args , format);
+    va_start(args, format);
     
     while(*format)
     {
@@ -83,7 +83,6 @@ int ft_printf(const char *format, ...)
         {
             ++format;
             count += ft_format(&format, args);
-            format++;
         }
         else
         {

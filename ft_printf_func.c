@@ -63,7 +63,7 @@ int ft_put_unsigned_nbr(unsigned int n)
 	return(ft_putnbr_base(number, base));
 }
 
-int ft_putnbr_decimal(long n)
+int ft_putnbr_decimal(int n)
 {
     int count;
     char *base;
