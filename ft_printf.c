@@ -66,6 +66,7 @@ int ft_format(const char **format, va_list args)
         count += ft_putchar('%');
     else
         count += ft_putchar(**format);
+    (*format)++;
     return (count);
 }
 
